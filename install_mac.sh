@@ -29,10 +29,11 @@ cp .zsh_plugins.txt ~/.zsh_plugins.txt
 antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 
 # install powerlevel9k and nerdfonts
+# you can search nerd font by "brew search --cask nerd"
 brew tap sambadevi/powerlevel9k
 brew install powerlevel9k
 brew tap homebrew/cask-fonts
-brew install --cask font-meslo-nerd-font
+brew install --cask font-meslo-lg-nerd-font
 brew install --cask iterm2
 brew install --cask visual-studio-code
 
