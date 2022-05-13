@@ -15,3 +15,7 @@ Copy ```keybindings.json``` to your vscode settings dir.
 - ```c-1``` Switch to editor group 1
 - ```c-2``` Switch to editor group 2
 - ```c-3``` etc.
+
+## Zsh command line style
+
+[超簡單！十分鐘打造漂亮又好用的 zsh command line 環境](https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f)
