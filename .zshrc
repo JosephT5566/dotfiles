@@ -11,11 +11,23 @@ source ~/.cargo/env
 export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
 # === Plugin Management ===
-# Antibody setup, we need to install Antibody first
-eval "$(antibody init)"
+# Zinit setup (https://github.com/zdharma-continuum/zinit)
+if [[ ! -f ~/.zinit/bin/zinit.zsh ]]; then
+  sh -c "$(curl -fsSL https://git.io/zinit-install)"
+fi
+source ~/.zinit/bin/zinit.zsh
 
 # Load plugins from list
-antibody bundle < ~/.zsh_plugins.txt
+if [[ -f ~/.zsh_plugins.txt ]]; then
+  while read -r line; do
+    [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+    # Remove inline comments and trim
+    plugin="${line%%#*}"
+    plugin="${plugin%"${plugin##*[![:space:]]}"}"
+    [[ -z "$plugin" ]] && continue
+    zinit light $plugin
+  done < ~/.zsh_plugins.txt
+fi
 
 # === History Settings ===
 HISTFILE=~/.zsh_history

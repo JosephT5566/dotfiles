@@ -33,10 +33,6 @@ if ! command -v zinit &>/dev/null; then
 fi
 
 cp .zsh_plugins.txt ~/.zsh_plugins.txt
-# You may need to adapt this for zinit syntax if your .zsh_plugins.txt is for antibody format
-
-# Install antibody
-brew install antibody
 
 # Install powerlevel10k and nerdfonts
 brew install romkatv/powerlevel10k/powerlevel10k
