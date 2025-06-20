@@ -8,7 +8,7 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
 source ~/.cargo/env
 
 # === Oh My Zsh Location ===
-export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # === Plugin Management ===
 # Zinit setup (https://github.com/zdharma-continuum/zinit)
@@ -41,7 +41,6 @@ setopt SHARE_HISTORY
 alias git=hub
 
 # === Powerlevel10k Setup ===
-# (Assumes you installed it with Homebrew or antibody)
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Load Powerlevel10k config if exists. If there's no .p10k.zsh, we can run `p10k configure`
@@ -49,9 +48,3 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # === Fallback for Bash config ===
 source ~/.bash_profile
-
-# === Oh My Zsh Core ===
-# Optional: Set ZSH again if you want to override antibody config (e.g. debugging)
-# export ZSH="$HOME/.oh-my-zsh"
-# plugins=(git)
-# source $ZSH/oh-my-zsh.sh
