@@ -1,0 +1,35 @@
+{
+  // Recommended extensions for this project
+  "recommendations": [
+    // 🦀 Rust
+    "rust-lang.rust-analyzer",
+    "bungcip.better-toml",
+    "vadimcn.vscode-lldb",
+
+    // 🦫 Go
+    "golang.go",
+    "ethan-reesor.vscode-go-test-adapter",
+
+    // 🧠 Productivity
+    "eamodio.gitlens",
+    "christian-kohler.path-intellisense",
+    "editorconfig.editorconfig",
+    "alefragnani.bookmarks",
+    "ryuta46.multi-command",
+    "VSpaceCode.whichkey",
+
+    // 💅 UI / Terminal
+    "vscode-icons-team.vscode-icons",
+    "equinusocio.vsc-material-theme",
+
+    // ✍️ Formatting / Comments
+    "esbenp.prettier-vscode",
+    "aaron-bond.better-comments",
+
+    // 🔍 JS/TS / Frontend (optional for node_modules)
+    "jasonnutter.search-node-modules"
+  ],
+
+  // Optional: block any default/unwanted extensions
+  "unwantedRecommendations": []
+}
