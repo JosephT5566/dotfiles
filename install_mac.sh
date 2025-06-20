@@ -9,28 +9,11 @@ if ! which brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install rust
-if ! which rustup >/dev/null 2>&1; then
-  curl https://sh.rustup.rs -sSf | sh -s -- -y
-  source ~/.cargo/env
-  rustup default stable
-else
-  rustup update
-fi
-
-# Rust toolchains and commands
-rustup component add clippy
-rustup target add aarch64-apple-ios armv7-apple-ios armv7s-apple-ios x86_64-apple-ios i386-apple-ios
-rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
-rustup target add wasm32-unknown-unknown
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install environment tools and languages
 brew install zsh zsh-completions kubectx gh shfmt go emacs nvm
-
-# Install and setup zinit (modern zsh plugin manager)
-if ! command -v zinit &>/dev/null; then
-  sh -c "$(curl -fsSL https://git.io/zinit-install)"
-fi
 
 cp .zsh_plugins.txt ~/.zsh_plugins.txt
 

@@ -1,33 +1,5 @@
-##### INSTALLED BY github.com/dt665m/dotfiles #####
-
-# === Go Environment ===
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
-
-# === Rust Environment ===
-source ~/.cargo/env
-
 # === Oh My Zsh Location ===
 export ZSH="$HOME/.oh-my-zsh"
-
-# === Plugin Management ===
-# Zinit setup (https://github.com/zdharma-continuum/zinit)
-if [[ ! -f ~/.zinit/bin/zinit.zsh ]]; then
-  sh -c "$(curl -fsSL https://git.io/zinit-install)"
-fi
-source ~/.zinit/bin/zinit.zsh
-
-# Load plugins from list
-if [[ -f ~/.zsh_plugins.txt ]]; then
-  while read -r line; do
-    [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
-    # Remove inline comments and trim
-    plugin="${line%%#*}"
-    plugin="${plugin%"${plugin##*[![:space:]]}"}"
-    [[ -z "$plugin" ]] && continue
-    zinit light $plugin
-  done < ~/.zsh_plugins.txt
-fi
 
 # === History Settings ===
 HISTFILE=~/.zsh_history
