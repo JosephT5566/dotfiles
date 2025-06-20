@@ -4,3 +4,13 @@ robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/jsontools
 robbyrussell/oh-my-zsh path:plugins/macos
+
+# --- Productivity Plugins ---
+zsh-users/zsh-autosuggestions   # Inline suggestions as you type
+zsh-users/zsh-syntax-highlighting  # Syntax coloring (must be last)
+rupa/z                          # Jump to recent folders (z <folder>)
+hlissner/zsh-autopair          # Auto-close quotes and brackets
+djui/alias-tips                # Show suggested aliases when typing full commands
+
+# --- Git & Prompt Enhancements ---
+romkatv/powerlevel10k          # Fast, beautiful prompt theme
