@@ -35,14 +35,14 @@ fi
 cp .zsh_plugins.txt ~/.zsh_plugins.txt
 # You may need to adapt this for zinit syntax if your .zsh_plugins.txt is for antibody format
 
+# Install antibody
+brew install antibody
+
 # Install powerlevel10k and nerdfonts
-brew tap homebrew/cask-fonts
+brew install romkatv/powerlevel10k/powerlevel10k
 brew install --cask font-meslo-lg-nerd-font
 brew install --cask iterm2
 brew install --cask visual-studio-code
-
-# Install powerlevel10k
-brew install romkatv/powerlevel10k/powerlevel10k
 
 # Copy VS Code settings
 mkdir -p ~/Library/Application\ Support/Code/User
