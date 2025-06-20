@@ -11,7 +11,11 @@ source ~/.cargo/env
 export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
 # === Plugin Management ===
-source ~/.zsh_plugins.sh
+# Antibody setup, we need to install Antibody first
+eval "$(antibody init)"
+
+# Load plugins from list
+antibody bundle < ~/.zsh_plugins.txt
 
 # === Theme Settings ===
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir go_version vcs)
