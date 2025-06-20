@@ -1,6 +1,6 @@
-# oh-my-zsh plugins (still useful)
-ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/docker
+# oh-my-zsh plugins
+OMZ::plugins/git
+OMZ::plugins/docker
 
 # --- Productivity Plugins ---
 zsh-users/zsh-autosuggestions   # Inline suggestions as you type

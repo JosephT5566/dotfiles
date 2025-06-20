@@ -1,19 +1,42 @@
 {
+    "files.autoSave": "onWindowChange",
+    // Code Navigation Improvements
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true // Auto-organize imports on save
+    },
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.gotoLocation.multipleImplementations": "goto",
+    "editor.gotoLocation.multipleReferences": "peek",
+    // ✅ Enables latest debugger experience for Node.js and Chrome
     "debug.node.useV3": true,
     "debug.chrome.useV3": true,
+    // ✅ Terminal settings
     "terminal.integrated.shell.osx": "zsh",
     "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
     "terminal.integrated.fontSize": 12,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.scrollback": 5000, // More terminal history
+    "terminal.integrated.defaultProfile.osx": "zsh", // Modern alternative to deprecated shell setting
+    // 🧘 Zen Mode adjustments
     "zenMode.hideLineNumbers": false,
-    "breadcrumbs.enabled": true,
-    "editor.renderControlCharacters": false,
     "zenMode.hideTabs": false,
-    "go.useLanguageServer": true,
+    // 🧭 Editor usability
+    "editor.renderControlCharacters": false,
+    "editor.suggestSelection": "first",
+    // 🧭 UI settings
     "workbench.editor.highlightModifiedTabs": true,
-    "terminal.integrated.rendererType": "dom",
     "workbench.editor.showTabs": true,
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    // 🧹 File explorer tweaks
+    "explorer.confirmDelete": false,
+    // 🧱 Breadcrumbs
+    "breadcrumbs.enabled": true,
+    // 🔐 Workspace trust behavior
+    "security.workspace.trust.untrustedFiles": "open",
+    // 🔁 Git & GitLens
+    "git.confirmSync": false,
     "gitlens.views.repositories.location": "gitlens",
     "gitlens.views.fileHistory.location": "gitlens",
     "gitlens.views.lineHistory.location": "gitlens",
@@ -21,26 +44,18 @@
     "gitlens.views.search.location": "gitlens",
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "git.confirmSync": false,
-    "workbench.iconTheme": "vscode-icons",
-    "vsicons.dontShowNewVersionMessage": true,
-    // "[rust]": {
-    //     "editor.defaultFormatter": "matklad.rust-analyzer",
-    // },
-    "java.semanticHighlighting.enabled": false,
-    "rust-analyzer.debug.openDebugPane": true,
+    // 🧠 Go Language Server (legacy setting still functional but may be auto-managed now)
+    "go.useLanguageServer": true,
+    // 🦀 Rust Analyzer settings (cleaned and current)
     "rust-client.engine": "rust-analyzer",
+    "rust-analyzer.debug.openDebugPane": true,
     "rust-analyzer.callInfo.full": false,
     "rust-analyzer.inlayHints.chainingHints": false,
     "rust-analyzer.cargo.allFeatures": true,
-    "editor.formatOnSave": true,
-    "rust-analyzer.diagnostics.enableExperimental": false,
     "rust-analyzer.diagnostics.enable": false,
-    "explorer.confirmDelete": false,
-    "redhat.telemetry.enabled": false,
-    "security.workspace.trust.untrustedFiles": "open",
     "rust-analyzer.runnables.overrideCargo": null,
-    // "rust-analyzer.rustfmt.overrideCommand": null,
+    // 🧠 Java (disabling semantic highlighting can reduce clutter)
+    "java.semanticHighlighting.enabled": false,
+    // 🛡 Disable telemetry
+    "redhat.telemetry.enabled": false
 }

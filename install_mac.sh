@@ -9,40 +9,19 @@ if ! which brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install rust
-if ! which rustup >/dev/null 2>&1; then
-  curl https://sh.rustup.rs -sSf | sh -s -- -y
-  source ~/.cargo/env
-  rustup default stable
-else
-  rustup update
-fi
-
-# Rust toolchains and commands
-rustup component add clippy
-rustup target add aarch64-apple-ios armv7-apple-ios armv7s-apple-ios x86_64-apple-ios i386-apple-ios
-rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
-rustup target add wasm32-unknown-unknown
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install environment tools and languages
 brew install zsh zsh-completions kubectx gh shfmt go emacs nvm
 
-# Install and setup zinit (modern zsh plugin manager)
-if ! command -v zinit &>/dev/null; then
-  sh -c "$(curl -fsSL https://git.io/zinit-install)"
-fi
-
 cp .zsh_plugins.txt ~/.zsh_plugins.txt
-# You may need to adapt this for zinit syntax if your .zsh_plugins.txt is for antibody format
 
 # Install powerlevel10k and nerdfonts
-brew tap homebrew/cask-fonts
+brew install romkatv/powerlevel10k/powerlevel10k
 brew install --cask font-meslo-lg-nerd-font
 brew install --cask iterm2
 brew install --cask visual-studio-code
-
-# Install powerlevel10k
-brew install romkatv/powerlevel10k/powerlevel10k
 
 # Copy VS Code settings
 mkdir -p ~/Library/Application\ Support/Code/User

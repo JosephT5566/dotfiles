@@ -1,28 +1,39 @@
-// Place your key bindings in this file to overwrite the defaults
+// keybindings.json
 [
     {
-        "key": "ctrl+s",
+        "key": "shift+cmd+backspace",
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus"
+    },
+    // 🔍 Find on demand (moved from ctrl+s to ctrl+shift+f for safety)
+    {
+        "key": "ctrl+shift+f",
         "command": "actions.find"
     },
+    // 🔁 Find next match while typing in search box
     {
         "key": "ctrl+s",
         "command": "editor.action.nextMatchFindAction",
         "when": "editorFocus && findInputFocussed"
     },
+    // 🔍 Emacs-style: Reveal definition (like go to def)
     {
         "key": "ctrl+x .",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
+    // 📝 Emacs-style: Show hover (quick info)
     {
         "key": "ctrl+x i",
         "command": "editor.action.showHover",
         "when": "editorTextFocus"
     },
+    // ⏪ Paste (already bound to ctrl+v; optional alternative)
     {
         "key": "ctrl+y",
         "command": "editor.action.clipboardPasteAction"
     },
+    // 🗂 Collapse/Expand lists (like File Explorer)
     {
         "key": "ctrl+b",
         "command": "list.collapse",
@@ -33,6 +44,7 @@
         "command": "list.expand",
         "when": "listFocus && !inputFocus"
     },
+    // 🔽🔼 Page navigation
     {
         "key": "ctrl+m",
         "command": "cursorPageDown",
@@ -43,6 +55,7 @@
         "command": "cursorPageUp",
         "when": "textInputFocus"
     },
+    // ↔ Word navigation
     {
         "key": "ctrl+alt+f",
         "command": "cursorWordEndRight",
@@ -53,6 +66,7 @@
         "command": "cursorWordLeft",
         "when": "textInputFocus"
     },
+    // 📐 Selection movement
     {
         "key": "ctrl+shift+n",
         "command": "cursorDownSelect",
@@ -93,20 +107,14 @@
         "command": "cursorWordLeftSelect",
         "when": "textInputFocus"
     },
+    // 🧩 Editor layout: Join splits
     {
         "key": "ctrl+alt+\\",
         "command": "workbench.action.joinTwoGroups"
     },
+    // 🧭 Layout presets
     {
         "key": "cmd+k 1",
-        "command": "workbench.action.editorLayoutSingle"
-    },
-    {
-        "key": "ctrl+x ctrl+s",
-        "command": "workbench.action.files.save",
-    },
-    {
-        "key": "ctrl+x 1",
         "command": "workbench.action.editorLayoutSingle"
     },
     {
@@ -114,53 +122,37 @@
         "command": "workbench.action.splitEditorOrthogonal"
     },
     {
-        "key": "ctrl+x 2",
-        "command": "workbench.action.splitEditorOrthogonal"
-    },
-    {
-        "key": "ctrl+k ctrl+\\",
-        "command": "-workbench.action.splitEditorOrthogonal"
-    },
-    {
         "key": "cmd+k 3",
         "command": "workbench.action.splitEditor"
+    },
+    // 🖥 Emacs-style layout
+    {
+        "key": "ctrl+x 1",
+        "command": "workbench.action.editorLayoutSingle"
+    },
+    {
+        "key": "ctrl+x 2",
+        "command": "workbench.action.splitEditorOrthogonal"
     },
     {
         "key": "ctrl+x 3",
         "command": "workbench.action.splitEditor"
     },
+    // 💾 Save (Emacs-style)
     {
-        "key": "ctrl+\\",
-        "command": "-workbench.action.splitEditor"
+        "key": "ctrl+x ctrl+s",
+        "command": "workbench.action.files.save"
     },
-    {
-        "key": "ctrl+;",
-        "command": "workbench.action.quickSwitchWindow"
-    },
+    // ⏩ Group Navigation
     {
         "key": "ctrl+'",
         "command": "workbench.action.focusNextGroup"
     },
     {
-        "key": "shift+alt+pagedown",
-        "command": "workbench.action.moveEditorToNextGroup"
+        "key": "ctrl+x o",
+        "command": "workbench.action.focusNextGroup"
     },
-    {
-        "key": "ctrl+alt+right",
-        "command": "-workbench.action.moveEditorToNextGroup"
-    },
-    {
-        "key": "shift+alt+pageup",
-        "command": "workbench.action.moveEditorToPreviousGroup"
-    },
-    {
-        "key": "ctrl+alt+left",
-        "command": "-workbench.action.moveEditorToPreviousGroup"
-    },
-    {
-        "key": "cmd+k h",
-        "command": "git.openChange"
-    },
+    // 🗂 Tab switching
     {
         "key": "ctrl+tab",
         "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
@@ -171,36 +163,37 @@
         "command": "workbench.action.quickOpenLeastRecentlyUsedEditor",
         "when": "!inEditorsPicker"
     },
+    // 🔄 Switch windows
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.quickSwitchWindow"
+    },
+    // 📦 Close file
+    {
+        "key": "ctrl+x k",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    // ⬇⬆ Move editor group
+    {
+        "key": "shift+alt+pagedown",
+        "command": "workbench.action.moveEditorToNextGroup"
+    },
+    {
+        "key": "shift+alt+pageup",
+        "command": "workbench.action.moveEditorToPreviousGroup"
+    },
+    // 🧪 Git view diff (custom)
+    {
+        "key": "cmd+k h",
+        "command": "git.openChange"
+    },
+    // 💻 Terminal: pane switching
     {
         "key": "ctrl+alt+cmd+down",
         "command": "workbench.action.terminal.focusNext"
     },
     {
         "key": "ctrl+alt+cmd+up",
-        "command": "workbench.action.terminal.focusPrevious"
-    },
-    {
-        "key": "ctrl+x u",
-        "command": "undo"
-    },
-    {
-        "key": "ctrl+x o",
-        "command": "workbench.action.focusNextGroup"
-    },
-    {
-        "key": "ctrl+x ctrl+f",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+x k",
-        "command": "workbench.action.closeActiveEditor"
-    },
-    {
-        "key": "ctrl+alt+cmd+n",
-        "command": "workbench.action.terminal.focusNext"
-    },
-    {
-        "key": "ctrl+alt+cmd+p",
         "command": "workbench.action.terminal.focusPrevious"
     },
     {
@@ -213,6 +206,22 @@
         "command": "workbench.action.terminal.focusPreviousPane",
         "when": "terminalFocus && terminalProcessSupported"
     },
+    // 🖼 Maximize panel
+    {
+        "key": "ctrl+x m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    // 🔁 Open file (Emacs-style)
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "workbench.action.quickOpen"
+    },
+    // 🔄 Undo (Emacs-style)
+    {
+        "key": "ctrl+x u",
+        "command": "undo"
+    },
+    // ❌ Remove accidental override of Quit (Mac)
     {
         "key": "alt+f4",
         "command": "workbench.action.quit"
@@ -220,14 +229,5 @@
     {
         "key": "cmd+q",
         "command": "-workbench.action.quit"
-    },
-    {
-        "key": "ctrl+x m",
-        "command": "workbench.action.toggleMaximizedPanel"
-    },
-    {
-        "key": "ctrl+x",
-        "command": "ctrl+x",
-        "when": "terminalFocus"
-    },
+    }
 ]
