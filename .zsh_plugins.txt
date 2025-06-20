@@ -1,6 +1,13 @@
-#oh-my-zsh plugins
-robbyrussell/oh-my-zsh
-robbyrussell/oh-my-zsh path:plugins/git
-robbyrussell/oh-my-zsh path:plugins/docker
-robbyrussell/oh-my-zsh path:plugins/jsontools
-robbyrussell/oh-my-zsh path:plugins/macos
+# oh-my-zsh plugins (still useful)
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/docker
+
+# --- Productivity Plugins ---
+zsh-users/zsh-autosuggestions   # Inline suggestions as you type
+zsh-users/zsh-syntax-highlighting  # Syntax coloring (must be last)
+rupa/z                          # Jump to recent folders (z <folder>)
+hlissner/zsh-autopair          # Auto-close quotes and brackets
+djui/alias-tips                # Show suggested aliases when typing full commands
+
+# --- Git & Prompt Enhancements ---
+romkatv/powerlevel10k          # Fast, beautiful prompt theme

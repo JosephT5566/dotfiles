@@ -1,64 +1,45 @@
 ##### INSTALLED BY github.com/dt665m/dotfiles #####
 
+# === Go Environment ===
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/local/bin
-export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
-# import plugins
-source ~/.zsh_plugins.sh
+# === Rust Environment ===
 source ~/.cargo/env
 
-# aliases
+# === Oh My Zsh Location ===
+export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+# === Plugin Management ===
+# Antibody setup, we need to install Antibody first
+eval "$(antibody init)"
+
+# Load plugins from list
+antibody bundle < ~/.zsh_plugins.txt
+
+# === History Settings ===
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY
+
+# === Alias ===
 alias git=hub
 
-# handle theme
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir go_version vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator history background_jobs ram load time)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+# === Powerlevel10k Setup ===
+# (Assumes you installed it with Homebrew or antibody)
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Visual customisation of the second prompt line
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰\uF460\uF460\uF460 "
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517\uf054%{%F{default}%} "
+# Load Powerlevel10k config if exists. If there's no .p10k.zsh, we can run `p10k configure`
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} "$"%{%b%f%k%F{yellow}%} %{%f%}"
-POWERLEVEL9K_MODE='nerdfont-complete'
-source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+# === Fallback for Bash config ===
+source ~/.bash_profile
 
-# zsh configuration
-SAVEHIST=50
-HISTFILE=~/.zsh_history
-
-POWERLEVEL9K_COLOR_SCHEME='light'
-
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon virtualenv context dir vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
-
-POWERLEVEL9K_VIRTUALENV_BACKGROUND='springgreen4'
-
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='springgreen3'
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
-
-POWERLEVEL9K_DIR_HOME_BACKGROUND='springgreen2'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='springgreen2'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
-
-POWERLEVEL9K_OS_ICON_BACKGROUND='grey0'
-POWERLEVEL9K_OS_ICON_FOREGROUND='deepskyblue3'
-
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='green'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='grey11'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='yellow'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='grey11'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='grey11'
-
-POWERLEVEL9K_STATUS_OK_BACKGROUND='springgreen2'
-POWERLEVEL9K_STATUS_OK_FOREGROUND='black'
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND='red'
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND='black'
+# === Oh My Zsh Core ===
+# Optional: Set ZSH again if you want to override antibody config (e.g. debugging)
+# export ZSH="$HOME/.oh-my-zsh"
+# plugins=(git)
+# source $ZSH/oh-my-zsh.sh

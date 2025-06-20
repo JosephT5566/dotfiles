@@ -1,17 +1,21 @@
 #!/bin/bash
 
-# install homebrew
+# Update Homebrew and upgrade installed packages
+brew update
+brew upgrade
+
+# Install Homebrew if not present
 if ! which brew >/dev/null 2>&1; then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# install rust
+# Install rust
 if ! which rustup >/dev/null 2>&1; then
-	curl https://sh.rustup.rs -sSf | sh -s -- -y
-	source ~/.cargo/env
-	rustup default stable
+  curl https://sh.rustup.rs -sSf | sh -s -- -y
+  source ~/.cargo/env
+  rustup default stable
 else
-	rustup update
+  rustup update
 fi
 
 # Rust toolchains and commands
@@ -20,31 +24,34 @@ rustup target add aarch64-apple-ios armv7-apple-ios armv7s-apple-ios x86_64-appl
 rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
 rustup target add wasm32-unknown-unknown
 
-# install environment tools and languages
-brew install zsh zsh-completions kubectx hub shfmt go emacs nvm
+# Install environment tools and languages
+brew install zsh zsh-completions kubectx gh shfmt go emacs nvm
 
-# install and setup antibody
-brew install getantibody/tap/antibody
+# Install and setup zinit (modern zsh plugin manager)
+if ! command -v zinit &>/dev/null; then
+  sh -c "$(curl -fsSL https://git.io/zinit-install)"
+fi
+
 cp .zsh_plugins.txt ~/.zsh_plugins.txt
-antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+# You may need to adapt this for zinit syntax if your .zsh_plugins.txt is for antibody format
 
-# install powerlevel9k and nerdfonts
-# you can search nerd font by "brew search --cask nerd"
-brew tap sambadevi/powerlevel9k
-brew install powerlevel9k
+# Install powerlevel10k and nerdfonts
 brew tap homebrew/cask-fonts
 brew install --cask font-meslo-lg-nerd-font
 brew install --cask iterm2
 brew install --cask visual-studio-code
 
-# copy vscode settings
+# Install powerlevel10k
+brew install romkatv/powerlevel10k/powerlevel10k
+
+# Copy VS Code settings
 mkdir -p ~/Library/Application\ Support/Code/User
 cp vscode/* ~/Library/Application\ Support/Code/User/
 
-# set default shell to zsh
+# Set default shell to zsh
 zsh --version
 
-# merge our zshrc contents if one already exists, otherwise just copy it over
+# Merge our zshrc contents if one already exists, otherwise just copy it over
 if [ -f ~/.zshrc ]; then
     echo "=== Merging .zshrc Files (MIGHT REQUIRE MANUAL CLEANUP!) ==="
     cat .zshrc | cat - ~/.zshrc > temp && rm ~/.zshrc && mv temp ~/.zshrc
@@ -61,3 +68,4 @@ git config --global alias.st status
 git config --global credential.helper 'cache --timeout 604800'
 
 echo "!! Terminal Apps need 'MesloLGM Nerd Font' in order to properly display Powerline Fonts"
+echo "!! If you switched to powerlevel10k, run 'p10k configure' to set up your prompt"
